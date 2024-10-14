@@ -6,12 +6,11 @@ if n == 1:
 elif n == 2:
     print(2)
 else:
-    prev1 = 1
-    prev2 = 2
+    dp = [0] * (n+1)
+    dp[1] = 1
+    dp[2] = 2
 
-    for _ in range(3, n+1):
-        current = prev1 + prev2
-        prev1 = prev2
-        prev2 = current
+    for i in range(3, n+1):
+        dp[i] = dp[i-1] + dp[i-2]
     
-    print(prev2 % 10007)
+    print(dp[-1]%10007)
