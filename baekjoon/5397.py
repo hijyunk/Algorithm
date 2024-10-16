@@ -17,7 +17,7 @@ for _ in range(t):
                 right.appendleft(left.pop())
         elif l == '>':
             if right:
-                left.append(right.pop())
+                left.append(right.popleft())
         else:
             left.append(l)
     print(*left + right, sep='')
