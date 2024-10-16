@@ -1,20 +1,23 @@
+from collections import deque
+
 t = int(input())
 
 for _ in range(t):
     L = input()
 
-    left = []
-    right = []
+    left = deque()
+    right = deque()
+
     for l in L:
         if l == '-':
             if left:
                 left.pop()
         elif l == '<':
             if left:
-                right.append(left.pop())
+                right.appendleft(left.pop())
         elif l == '>':
             if right:
                 left.append(right.pop())
         else:
             left.append(l)
-    print(*left + list(reversed(right)), sep='')
+    print(*left + right, sep='')
